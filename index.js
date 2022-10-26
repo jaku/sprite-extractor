@@ -37,7 +37,7 @@ const walker = require('walker')
 const rimraf = require('rimraf')
 const EventEmitter = require('events').EventEmitter;
 const gm = require('gm').subClass({
-    imageMagick: true
+    imageMagick: false
 })
 const docopt = require('docopt');
 
@@ -73,8 +73,8 @@ var launch = function(args) {
             },
             function(next) {
                 var items = []
-                for (var key in sheetData['frames']) {
-                    var item = sheetData['frames'][key]
+                for (var key in sheetData['textures'][0]['frames']) {
+                    var item = sheetData['textures'][0]['frames'][key]
                     item['spriteName'] = key
                     items.push(item)
                 }
@@ -113,8 +113,8 @@ var launch = function(args) {
                             result.gravity('North')
                                 .background('transparent')
                                 .extent(_item['sourceSize']['w'], _item['sourceSize']['h'])
-                        }
-                        result.write('./' + _item['spriteName'], function(_err) {
+                        }         
+                        result.write('./' + _item['filename'], function(_err) {
                             if (_err) {
                                 _next(_err)
                                 return
@@ -142,7 +142,7 @@ var launch = function(args) {
 
 var kwargs = {
     name: 'sprite-extractor',
-    version: 'sprite-extractor 0.0.1'
+    version: 'sprite-extractor 0.0.2'
 };
 
 function main(args) {
