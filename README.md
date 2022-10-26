@@ -20,7 +20,10 @@ npm install -g sprite-extractor
 ```
 
 ## Change log
+**0.0.3**
 
+    * Bug fixes?
+        * Updated this to support the spritesheets for vampire survivors. It may work for others but I don't know.
 **0.0.2**
 
     * Bug fixes
